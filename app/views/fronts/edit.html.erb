@@ -1,0 +1,282 @@
+
+
+    
+<div class="row" style='margin-bottom:20px'>
+    <div class="col-lg-12">
+        
+    </div>
+    
+</div>
+
+<!-- /.row -->
+<div class="row">
+  <div class='col-lg-2'>
+    <!-- NOTHING HERE -->
+  </div>
+  <div class="col-lg-8">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+          Edit Front
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <form role="form">
+          
+          <div class='row'>
+            <div class='col-lg-6'>
+              <div class="form-group">
+                <label>First Name</label>
+                <input id='firstname' class="form-control" value="<%= @front.firstname %>">
+              </div>
+            </div>
+            <div class='col-lg-6'>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input id='lastname' class="form-control" value="<%= @front.lastname %>">
+              </div>
+            </div>
+          </div>
+          
+          <div class='row'>
+            <div class="col-lg-8">
+              <div class="form-group">
+                <label>Phone1</label>
+                <div class='row'>
+                  <div class='col-lg-4'>
+                    <input id='phone1-1' class="form-control phone-control" onkeyup='movefocus(this,"phone1-2")' maxlength="3" value="<%= @phone1_parts[0] %>">
+                  </div>
+                  <div class='col-lg-4'>
+                    <input id='phone1-2' class="form-control" onkeyup='movefocus(this,"phone1-3")' maxlength="3" value="<%= @phone1_parts[1] %>">
+                  </div>
+                  <div class='col-lg-4'>
+                    <input id='phone1-3' class="form-control" maxlength="4" value="<%= @phone1_parts[2] %>">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="col-lg-8">
+              <div class="form-group">
+                <label>Phone2</label>
+                <div class='row'>
+                  <div class='col-lg-4'>
+                    <input id='phone2-1' class="form-control" onkeyup='movefocus(this,"phone2-2")' maxlength="3" value="<%= @phone2_parts[0] %>">
+                  </div>
+                  <div class='col-lg-4'>
+                    <input id='phone2-2' class="form-control" onkeyup='movefocus(this,"phone2-3")' maxlength="3" value="<%= @phone2_parts[0] %>">
+                  </div>
+                  <div class='col-lg-4'>
+                    <input id='phone2-3' class="form-control" maxlength="4" value="<%= @phone2_parts[0] %>">
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          <div class='row'>
+            <div class="col-lg-8">
+              <div class="form-group">
+                <label>Phone3</label>
+                <div class='row'>
+                  <div class='col-lg-4'>
+                    <input id='phone3-1' class="form-control" onkeyup='movefocus(this,"phone3-2")' maxlength="3" value="<%= @phone3_parts[0] %>">
+                  </div>
+                  <div class='col-lg-4'>
+                    <input id='phone3-2' class="form-control" onkeyup='movefocus(this,"phone3-3")' maxlength="3" value="<%= @phone3_parts[0] %>">
+                  </div>
+                  <div class='col-lg-4'>
+                    <input id='phone3-3' class="form-control" maxlength="4" value="<%= @phone3_parts[0] %>">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="col-lg-8">
+              <div class="form-group">
+                <label>Phone4</label>
+                <div class='row'>
+                  <div class='col-lg-4'>
+                    <input id='phone4-1' class="form-control" onkeyup='movefocus(this,"phone4-2")' maxlength="3" value="<%= @phone4_parts[0] %>">
+                  </div>
+                  <div class='col-lg-4'>
+                    <input id='phone4-2' class="form-control" onkeyup='movefocus(this,"phone4-3")' maxlength="3" value="<%= @phone4_parts[0] %>">
+                  </div>
+                  <div class='col-lg-4'>
+                    <input id='phone4-3' class="form-control" maxlength="4" value="<%= @phone4_parts[0] %>">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+           <div class='row'>
+            <div class='col-lg-12'>
+              <div class="form-group">
+                <label>Email</label>
+                <input id='email' class="form-control" value="<%= @front.email %>">
+              </div>
+            </div>
+          </div>
+           
+          <div class='row'>
+            <div class='col-lg-12'>
+              <div class="form-group">
+                <label>Address</label>
+                <input id='address' class="form-control" value="<%= @front.address %>">
+              </div>
+            </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-lg-6'>
+              <div class="form-group">
+                <label>City</label>
+                <input id='city' class="form-control" value="<%= @front.city %>">
+              </div>
+            </div>
+            <div class='col-lg-2'>
+              <div class="form-group">
+                <label>State</label>
+                <input id='state' class="form-control" maxlength="2" value="<%= @front.state %>">
+              </div>
+            </div>
+            <div class='col-lg-4'>
+              <div class="form-group">
+                <label>Zipcode</label>
+                <input id='zipcode' class="form-control" value="<%= @front.zipcode %>">
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class='row'>
+            <div class='col-lg-3'>
+              <div class="form-group">
+                <label>PPM</label>
+                <input id='ppm' class="form-control" value="<%= @front.ppm %>">
+              </div>
+            </div>
+          
+            <div class='col-lg-9'>
+              <div class="form-group">
+                <label>Fedex</label>
+                <input id='fedex' class="form-control" value="<%= @front.fedex %>">
+              </div>
+            </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-lg-6'>
+              
+              <div class="form-group">
+                <label>Worker1</label>
+                <select id='worker1' class="form-control">
+                  <% @workers.each do | worker | %>
+                    <option value="<%= worker.name %>"><%= worker.name %></option>
+                  <% end %>
+                </select>
+                
+              </div>
+            </div>
+            <div class='col-lg-6'>
+              <div class="form-group">
+                <label>Worker2</label>
+                <select id='worker2' class="form-control">
+                  <% @workers.each do | worker | %>
+                    <option value="<%= worker.name %>"><%= worker.name %></option>
+                  <% end %>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-lg-3'>
+              <button type="button" id='save-button' class="btn btn-success" onclick="updatefront()" style=';width:100%'>Save Changes</button>
+            </div>
+            <div class='col-lg-6'>
+              <!-- BLANK -->
+            </div>
+            <div class='col-lg-3'>
+              <a href="/fronts/newfront"><button type="button" id='cancel-button' class="btn btn-danger" onclick="cancel()" style=';width:100%'>Cancel</button></a>
+            </div>
+          </div>
+          
+        </form>
+     </div>
+    </div>
+  </div>
+  <div class='col-lg-2'>
+    <!-- NOTHING HERE -->
+  </div>
+</div>
+<!-- /.row -->
+       
+<script>
+  $(document).ready(function(){
+    $("#worker1").val('<%= @front.worker1 %>')
+    $("#worker2").val('<%= @front.worker2 %>')
+    $("#firstname").focus();
+    
+  });
+  
+  function movefocus(self,id) {
+    if ($(self).val().length == $(self).attr('maxlength')) {
+      $("#" + id).focus()
+    }
+  }
+  
+  function updatefront() {
+    var fname = $("#firstname").val()
+    var lname = $("#lastname").val()
+    var phone1 = $("#phone1-1").val() + "-" + $("#phone1-2").val() + "-" + $("#phone1-3").val()
+    var phone2 = $("#phone2-1").val() + "-" + $("#phone2-2").val() + "-" + $("#phone2-3").val()
+    var phone3 = $("#phone3-1").val() + "-" + $("#phone3-2").val() + "-" + $("#phone3-3").val()
+    var phone4 = $("#phone4-1").val() + "-" + $("#phone4-2").val() + "-" + $("#phone4-3").val()
+    var address = $("#address").val()
+    var email = $("#email").val()
+    var city = $("#city").val()
+    var state = $("#state").val()
+    var zipcode = $("#zipcode").val()
+    var ppm = $("#ppm").val()
+    var fedex = $("#fedex").val()
+    var worker1 = $("#worker1 option:selected").text()
+    var worker2 = $("#worker2 option:selected").text()
+    var id = <%= @front.id %>
+    
+    $.post(
+      "/fronts/update", {
+      "id":id,
+      "firstname":fname,
+      "lastname":lname,
+      "phone1":phone1,
+      "phone2":phone2,
+      "phone3":phone3,
+      "phone4":phone4,
+      "email":email,
+      "address":address,
+      "city":city,
+      "state":state,
+      "zipcode":zipcode,
+      "ppm":ppm,
+      "fedex":fedex,
+      "worker1": worker1,
+      "worker2": worker2
+      
+      },
+      function(data){
+        bootbox.alert("Front Saved",function(){
+          window.location.href = "/fronts"
+        });
+    });
+  }
+  
+  
+</script>
+   
+<style>
+  .phone-control {
+    margin:0px;
+  }
+</style>

@@ -1,0 +1,2 @@
+module NocallsHelper
+end

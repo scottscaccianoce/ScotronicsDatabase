@@ -1,0 +1,244 @@
+
+
+    
+<div class="row" style='margin-bottom:10px'>
+    <div class="col-lg-12">
+        <h3 class="page-header">New Front</h3>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+            Check Front
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          <form role="form">
+            <div class="row">
+              <div class="col-lg-7">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input id='firstname' class="form-control">
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input id='lastname' class="form-control">
+                  </div>
+              </div>
+            </div>
+                  
+            <div class="row">
+              <div class="col-lg-12">
+                <label>Phone</label>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-2">
+                <input id='phone1-1' class="form-control" onkeyup='movefocus(this,"phone1-2")' maxlength="3">
+              </div>
+              <div class="col-sm-2">
+                
+                <input id='phone1-2' class="form-control" onkeyup='movefocus(this,"phone1-3")' maxlength="3">
+              </div>
+              <div class="col-sm-2">
+                <input id='phone1-3' class="form-control" maxlength="4">
+              </div>
+              <div class="col-sm-6">
+              </div>
+            </div>
+                
+             <div class="row">
+              <div class="col-lg-6">
+                <button type="button" id='check-button' class="btn btn-primary" onclick="checkperson()" style='margin-top:15px'>Check Person</button>
+              </div>
+              
+              <div class="col-lg-3">
+                <button type="button" id='cancel-button' class="btn btn-danger" onclick="resetpage()" style='margin-top:15px;width:100%'>Cancel</button>
+              </div>
+              <div class="col-lg-3">
+                <button type="button" id='continue-button' class="btn btn-success" onclick="continuefront()" style='margin-top:15px;width:100%'>Continue</button>
+              </div>
+            </div>
+          </form>  
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div id='nocall-results-div' class="panel panel-danger" >
+        <div class="panel-heading">
+          People found on No-Call List
+        </div>
+      
+        <div class="panel-body">
+          
+          <table id='nocall-table' class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                  <th style='width:125px'>First Name</th>
+                  <th style='width:150px'>Last Name</th>
+                  <th style='width:70px'>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+             
+            </tbody>
+          </table>
+         
+        </div>
+      </div>
+    </div>
+    
+</div> <!-- End Row -->
+    
+  <!--  ============================================================= -->
+    
+      
+
+        
+      
+      
+      <div class="row">
+        <div class="col-lg-12">
+          <div id='fronts-results-div' class="panel panel-warning">
+            <div class="panel-heading">
+              People found that have already been fronted
+            </div>
+          
+          <div class="panel-body">
+            <div class='table-responsive'  >
+              <table id='fronts-table' class="table table-striped table-bordered" >
+                <thead>
+                    <tr>
+                       <th >First Name</th>
+                          <th >Last Name</th>
+                          <th >Phone1</th>
+                          <th >Phone2</th>
+                          <th >Phone3</th>
+                          <th >Phone4</th>
+                          <th >Address</th>
+                          <th >City</th>
+                          <th >St</th>
+                          <th >Zipcode</th>
+                          <th >Date</th>
+                          <th >Worker1</th>
+                          <th >Worker2</th>
+                    </tr>
+                </thead>
+                <tbody style='overflow:auto;'>
+                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+<script>
+
+  function checkperson() {
+    var fname = $("#firstname").val()
+    var lname = $("#lastname").val()
+    var phone1 = $("#phone1-1").val() + "-" + $("#phone1-2").val() + "-" + $("#phone1-3").val()
+    $("#fronts-table").find('tbody').html('');
+    $("#nocall-table").find('tbody').html('');
+    
+    $.post('/fronts/checkperson',{"firstname":fname,"lastname":lname,"phone1":phone1},function(data) {
+      RenderCheckPersonTable(data);
+      $("#continue-button").show();
+      $("#cancel-button").show();
+      $("#nocall-results-div").show();
+      $("#fronts-results-div").show();
+      $("#check-button").hide();
+      $("#continue-button").focus();
+      
+    });
+  }
+  
+  $(document).ready(function(){
+    
+    resetpage()
+     
+  });
+  
+  function movefocus(self,id) {
+    if ($(self).val().length == $(self).attr('maxlength')) {
+      $("#" + id).focus()
+    }
+  }
+  
+  
+  function RenderCheckPersonTable(data) {
+    console.log(data);
+    var nocalls = data['nocall_result']
+    var fronts = data['fronts_result']
+
+    $("#nocall-table").find('tbody').html('')
+    $("#fronts-table").find('tbody').html('')
+    
+     
+    for(var i = 0 ; i < nocalls.length; ++i) {
+      html = "<tr>"
+      html = html + "<td>" + nocalls[i]['firstname'] + "</td>"
+      html = html + "<td>" + nocalls[i]['lastname'] + "</td>"
+      html = html + "<td>" + nocalls[i]['phone'] + "</td>"
+      html = html + "</tr>"
+      $("#nocall-table").find('tbody').append(html)
+      $("#nocall-table").find('td').attr('nowrap','nowrap')
+    }
+    
+     for(var i = 0 ; i < fronts.length; ++i) {
+      html = "<tr>"
+      html = html + "<td>" + fronts[i]['firstname'] + "</td>"
+      html = html + "<td>" + fronts[i]['lastname'] + "</td>"
+      html = html + "<td>" + fronts[i]['phone1'] + "</td>"
+      html = html + "<td>" + fronts[i]['phone2'] + "</td>"
+      html = html + "<td>" + fronts[i]['phone3'] + "</td>"
+      html = html + "<td>" + fronts[i]['phone4'] + "</td>"
+      html = html + "<td>" + fronts[i]['address'] + "</td>"
+      html = html + "<td>" + fronts[i]['city'] + "</td>"
+      html = html + "<td>" + fronts[i]['state'] + "</td>"
+      html = html + "<td>" + fronts[i]['zipcode'] + "</td>"
+      html = html + "<td>" + fronts[i]['maildate'] + "</td>"
+      html = html + "<td>" + fronts[i]['worker1'] + "</td>"
+      html = html + "<td>" + fronts[i]['worker2'] + "</td>"
+      
+      html = html + "</tr>"
+      $("#fronts-table").find('tbody').append(html)
+      $("#fronts-table").find('td').attr('nowrap','nowrap')
+      $("#fronts-table").find('th').attr('nowrap','nowrap')
+    }
+    //$("#fronts-table-body").html(html)
+    
+  }
+  
+  function resetpage() {
+    $("#check-button").show();
+    $("#continue-button").hide();
+    $("#cancel-button").hide();
+    $("#nocall-results-div").hide();
+    $("#fronts-results-div").hide();
+    $("#firstname").focus()
+    $("#firstname").val('')
+    $("#lastname").val('')
+    $("#phone1-1").val('')
+    $("#phone1-2").val('')
+    $("#phone1-3").val('')
+    
+  }
+  
+  function continuefront() {
+    var fname = $("#firstname").val()
+    var lname = $("#lastname").val()
+    var phone1 = $("#phone1-1").val() + "-" + $("#phone1-2").val() + "-" + $("#phone1-3").val()
+    url = "/fronts/createfront?firstname=" + fname + "&lastname=" + lname + "&phone1=" + phone1;
+    window.location.href = url;
+  }
+</script>
+   

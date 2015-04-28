@@ -1,0 +1,47 @@
+<% if session[:current_user_role] == "admin" %>
+<div class="row" style='margin-bottom:20px'>
+    <div class="col-lg-12">
+        <h3 class="page-header">Admin</h3>
+    </div>
+</div>
+<div class='row' style='margin-bottom:40px'>
+    <div class="col-lg-4">
+        <button  class="btn btn-danger" style='width:100%' onclick='frontsdialog()'>Delete All Fronts</button>
+    </div>
+</div>
+<div class='row' style='margin-bottom:40px'>
+    <div class="col-lg-4">
+        <button class="btn btn-danger" style='width:100%' onclick='nocalldialog()'>Delete All NoCalls</button>
+    </div>
+</div>
+
+
+<script>
+  
+  function frontsdialog() {
+    bootbox.confirm("Delete all fronts. Are you sure?", function(result) {
+      if (result) {
+        $.post('/admin/clearfronts',{}, function(data){
+          window.location.href = "/fronts/index"
+        }); 
+      }
+      
+    }); 
+  }
+  
+  function nocalldialog() {
+     bootbox.confirm("Delete all NoCalls. Are you sure?", function(result) {
+      if (result) {
+        $.post('/admin/clearnocalls',{}, function(data){
+          window.location.href = "/nocalls/index"
+        }); 
+      }
+      
+    }); 
+  }
+  
+  
+</script>
+
+
+<% end %>

@@ -1,0 +1,65 @@
+// Place all the styles related to the kanbans controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#sortable_backlog, #sortable_queue, #sortable_progress, #sortable_resolved , #sortable_critical, #sortable_critical_resolved {
+    border: 1px solid #eee;
+    width:100%;
+    min-width:130px;
+    min-height: 30px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+}
+
+#sortable_backlog li, #sortable_queue li, #sortable_progress li, #sortable_resolved li, #sortable_critical li, #sortable_critical_resolved li{
+    margin: 5px 5px 5px 5px;
+    padding: 5px;
+    font-size: 12px;
+    width: 95%;
+   /* background: #eee; */
+    border: 1px solid #ddd;
+
+}
+
+.d3_task {
+    background:#d9534f;
+}
+.wow_task {
+    background:#f0ad4e;
+}
+.sc2_task {
+    background:#337ab7;
+}
+.mac_task {
+    background:#5cb85c;
+}
+
+.kanban-table {
+    border-collapse: separate;
+}
+
+.kanban-table td {
+    padding: 0px 20px 20px 20px;
+    vertical-align: top;
+}
+
+.kanban-table th {
+    padding: 0px 2px 2px 20px;
+}
+
+.kanban-start-time {
+    float:right;
+}
+
+.card-icon {
+    height:24px;
+    width:24px;
+}
+
+.kanban-resources {
+    margin-left:5px;
+}
