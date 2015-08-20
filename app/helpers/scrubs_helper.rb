@@ -1,0 +1,2 @@
+module ScrubsHelper
+end
