@@ -90,7 +90,10 @@ Leads::Application.routes.draw do
   post "nocalls/upload"
   post "nocalls/doimport"
   
-  
+  get "scrubs", :to => "scrubs#import"
+  post "scrubs/upload"
+  post "scrubs/doscrub"
+  get "scrubs/import"
   
   get "workers", :to => "workers#index"
   get "workers/index"
